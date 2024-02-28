@@ -97,7 +97,7 @@ https://openweathermap.org/
 					var curtemp = Math.round(apiResponse.main.temp);
 					var wimg = "./images/pack" + `${iconPack}` + "/" + apiResponse.weather[0].icon + ".png";
 					$.ajax({
-						url: 'http://api.openweathermap.org/geo/1.0/direct',
+						url: 'https://api.openweathermap.org/geo/1.0/direct',
 						data: { q: `${yourCity}`, appid: `${yourApiKey}` },
 						dataType: 'json',
 						success: function (geoResponse) {
