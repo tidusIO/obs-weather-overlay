@@ -13,7 +13,7 @@ https://openweathermap.org/
 		var urlParams = new URLSearchParams(queryString);
 // ------------------------------------------------CHANGE THESE SETTINGS ----------------------------------------------- */
 		// REQUIRED
-		var yourApiKey = "9f59f45b56fc576ece44ab110ea9ee33";				// your OpenWeatherMap Api key here
+		var yourApiKey = urlParams.has("key") ? urlParams.get("key") : ""; // your OpenWeatherMap Api key here
 		var yourCity = urlParams.has("city") ? urlParams.get("city") : "Bangkok"; // your city name, ex: "London, UK" or "Las Vegas, NV, US"
 		var yourUnits = "metric";					// 'imperial' for fahrenheit  'metric' for celsius  'standard' for kelvin.
 
