@@ -84,7 +84,7 @@ https://openweathermap.org/
 		document.querySelector(':root').style.setProperty('--wBorder', weatherBorder+"px");
 		refreshData();
 		function weatherCheck() {
-			var time = time24hour != true ? currentTime(new Date()) : time24(new Date());
+			var time = time24hour != true ? currentTime(changeTimeZone(new Date(), 'Asia/Bangkok')) : time24(changeTimeZone(new Date(), 'Asia/Bangkok'));
 			$.ajax({
 				url: 'https://api.openweathermap.org/data/2.5/weather',
 				data: { units: `${yourUnits}`, q: `${yourCity}`, appid: `${yourApiKey}`, lang: `${language}` },
@@ -129,6 +129,21 @@ https://openweathermap.org/
 					});
 				}
 			});
+		}
+		function changeTimeZone(date, timeZone) {
+			if (typeof date === 'string') {
+				return new Date(
+					new Date(date).toLocaleString('en-US', {
+						timeZone,
+					}),
+				);
+			}
+
+			return new Date(
+				date.toLocaleString('en-US', {
+					timeZone,
+				}),
+			);
 		}
 		function currentTime(date) {
 			var hours = date.getHours();
