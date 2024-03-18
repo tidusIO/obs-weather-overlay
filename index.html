@@ -15,6 +15,7 @@ https://openweathermap.org/
 		// REQUIRED
 		var yourApiKey = urlParams.has("key") ? urlParams.get("key") : ""; // your OpenWeatherMap Api key here
 		var yourCity = urlParams.has("city") ? urlParams.get("city") : "Bangkok"; // your city name, ex: "London, UK" or "Las Vegas, NV, US"
+		var yourTimezone = urlParams.has("timezone") ? urlParams.get("timezone") : "Asia/Bangkok"; // your timezone, ex: "Asia/Bangkok" or "Europe/Berlin"
 		var yourUnits = "metric";					// 'imperial' for fahrenheit  'metric' for celsius  'standard' for kelvin.
 
 		// OPTIONAL
@@ -84,7 +85,7 @@ https://openweathermap.org/
 		document.querySelector(':root').style.setProperty('--wBorder', weatherBorder+"px");
 		refreshData();
 		function weatherCheck() {
-			var time = time24hour != true ? currentTime(changeTimeZone(new Date(), 'Asia/Bangkok')) : time24(changeTimeZone(new Date(), 'Asia/Bangkok'));
+			var time = time24hour != true ? currentTime(changeTimeZone(new Date(), yourTimezone)) : time24(changeTimeZone(new Date(), yourTimezone));
 			$.ajax({
 				url: 'https://api.openweathermap.org/data/2.5/weather',
 				data: { units: `${yourUnits}`, q: `${yourCity}`, appid: `${yourApiKey}`, lang: `${language}` },
